@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elpro International School | Contact Us</title>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8fcff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #074c78;
+      padding: 10px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .main-logo img {
+      width: 90px;
+    }
+
+    .sub-logo img {
+      width: 40px;
+      display: block;
+    }
+
+    .sub-logo a {
+      color: white;
+      font-size: 12px;
+      text-decoration: none;
+      display: block;
+      margin-top: 5px;
+    }
+
+    nav {
+      transition: 0.3s ease;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      border-bottom: 2px solid white;
+    }
+
+    /* Checkbox (hidden) used for toggling */
+    #nav-toggle {
+      display: none;
+    }
+
+    /* Hamburger Label (visible on small screens) */
+    .hamburger-label {
+      display: none;
+      cursor: pointer;
+      width: 35px;
+      height: 25px;
+      gap: 5px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hamburger-label span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    
+
+    /* Responsive Navigation */
+    @media (max-width: 900px) {
+      /* hide default nav horizontally */
+      nav {
+        display: none;
+        width: 100%;
+        background: #074c78;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+      }
+
+      /* show label (hamburger) */
+      .hamburger-label {
+        display: flex;
+      }
+
+      /* When checkbox checked, show nav (checkbox + label + nav are sibling order dependent) */
+      #nav-toggle:checked ~ nav {
+        display: block;
+      }
+
+      /* Make header items stack nicely on small screens */
+      header {
+        padding: 12px 18px;
+      }
+
+      .header-left {
+        gap: 12px;
+      }
+    }
+
+    /* Contact Section */
+    h2 {
+      text-align: center;
+      color: #005baa;
+      margin-top: 40px;
+      font-size: 28px;
+      padding-top: 80px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 20px 10%;
+    }
+
+    /* Left Info Box */
+    .contact-info {
+      background: linear-gradient(160deg, #005baa, #1aa38a);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      min-height: 450px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-info h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p,
+    .contact-info a {
+      font-size: 14px;
+      line-height: 1.6;
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-info .icon {
+      margin-right: 8px;
+    }
+
+    /* Form */
+    form {
+      background: white;
+      flex: 1;
+      min-width: 320px;
+      max-width: 700px;
+      border-radius: 10px;
+      padding: 20px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      background: #f8fcff;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .submit-btn {
+      background: #005baa;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .submit-btn:hover {
+      background: #004b92;
+    }
+
+    /* Social Section */
+    .social-section {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .social-section h3 {
+      color: #005baa;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .social-icons a img {
+      width: 28px;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background: #003366;
+      color: white;
+      padding: 40px 5%;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    footer .footer-left img {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    footer p,
+    footer a {
+      color: white;
+      font-size: 13px;
+      line-height: 1.8;
+      text-decoration: none;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #1aa38a;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li a:hover {
+      text-decoration: underline;
+    }
+
+    footer .bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 10px;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="main-logo">
+        <img src="./images/imgi_2_eis-white.png" alt="Elpro Logo" />
+      </div>
+      <div class="sub-logo">
+        <img src="./images/imgi_3_sahitya.jpg" alt="Saahitya Logo" />
+        <a href="#">Know More about Saahitya</a>
+      </div>
+    </div>
+
+    <!-- Checkbox toggle (hidden) + label used as hamburger -->
+    <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+
+    <label for="nav-toggle" class="hamburger-label" aria-hidden="false" title="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- Navigation -->
+    <nav id="navMenu" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="contact.html"class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact Section -->
+  <h2>Contact Us</h2>
+  <p class="subtitle">Any question or remarks? Just write us a message!</p>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p>📞 +91 8069020202</p>
+      <p>📧 <a href="mailto:reception@elproschools.edu.in">reception@elproschools.edu.in</a><br>
+        <a href="mailto:admissions@elproschools.edu.in">admissions@elproschools.edu.in</a>
+      </p>
+      <br>
+      <p>📍 <strong>EIS Chinchwad Campus</strong><br>
+        Elpro compound, Entrance from Shridhar Nagar road,<br>
+        Pimpri-Chinchwad Link Road, Pune, Maharashtra 411033.<br>
+        <strong>Managed by Hind Charity Trust</strong>
+      </p>
+      <br>
+      <p>📍 <strong>EIS Hinjewadi Campus</strong><br>
+        Elpro International School<br>
+        Hinjewadi Phase - 1<br>
+        411057 Pune, Maharashtra<br>
+        <strong>Managed by Hind Charity Welfare Foundation</strong>
+      </p>
+    </div>
+
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Student Name *</label>
+          <input type="text" placeholder="Enter the full name" required>
+        </div>
+        <div class="form-group">
+          <label>Parent Name *</label>
+          <input type="text" placeholder="Enter the full name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Id *</label>
+          <input type="email" placeholder="name@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="text" placeholder="0000012345" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Type</label>
+        <div class="radio-group">
+          <label><input type="radio" name="type"> General Inquiry</label>
+          <label><input type="radio" name="type"> New Admission</label>
+          <label><input type="radio" name="type"> Old Student</label>
+          <label><input type="radio" name="type"> Alumni</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea placeholder="Write your message" required></textarea>
+      </div>
+
+      <button class="submit-btn" type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Social Section -->
+  <div class="social-section">
+    <h3>Follow Us On Our Socials</h3>
+    <div class="social-icons">
+      <a href="#"><img src="https://elproschools.edu.in/media--social-icon.svg" alt="Facebook"></a>
+      <a href="#"><img src="https://elproschools.edu.in/media--social-icon-1.svg" alt="Instagram"></a>
+      <a href="#"><img src="https://elproschools.edu.in/media--social-icon-2.svg" alt="YouTube"></a>
+      <a href="#"><img src="https://elproschools.edu.in/linkdeinc.png" alt="LinkedIn"></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <img src="./images/imgi_2_eis-white.png" alt="Elpro Logo" />
+      <p>admissions@elproschools.edu.in</p>
+      <p>+91 8069020202</p>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Curriculum</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Campuses</h4>
+        <ul>
+          <li><a href="#">EIS Chinchwad</a></li>
+          <li><a href="#">EIS Hinjewadi</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      © Copyright 2024, All Rights Reserved 
+    </div>
+  </footer>
+
+  
+</body>
+</html>

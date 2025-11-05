@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elpro International School | About Us</title>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8fcff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #074c78;
+      padding: 10px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .main-logo img {
+      width: 90px;
+    }
+
+    .sub-logo img {
+      width: 40px;
+      display: block;
+    }
+
+    .sub-logo a {
+      color: white;
+      font-size: 12px;
+      text-decoration: none;
+      display: block;
+      margin-top: 5px;
+    }
+
+    nav {
+      transition: 0.3s ease;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      border-bottom: 2px solid white;
+    }
+
+    /* Hamburger Checkbox */
+    #menu-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 35px;
+      height: 25px;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    
+
+    /* Responsive Navigation */
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+      }
+
+      #menu-toggle:checked ~ nav {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      width: 100%;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Core Values */
+    .core-values {
+      text-align: center;
+      padding: 80px 10%;
+    }
+
+    .core-values h2 {
+      color: #1556a0;
+      margin-bottom: 40px;
+      font-size: 40px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .value-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .value-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .value-card img {
+      width: 50px;
+      margin-bottom: 15px;
+    }
+
+    .value-card h4 {
+      color: #002b5b;
+      margin-bottom: 10px;
+    }
+
+    /* Leadership Section */
+    .leadership {
+      text-align: center;
+      padding: 60px 10%;
+      background: #f9f9f9;
+    }
+
+    .leadership h3 {
+      color: #002b5b;
+      font-weight: 600;
+    }
+
+    .leadership h2 {
+      color: #004aad;
+      margin-bottom: 40px;
+      font-size: 40px;
+    }
+
+    .leader-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .leader-text {
+      flex: 1;
+    }
+
+    .leader-text h4 {
+      color: #002b5b;
+      margin-bottom: 10px;
+    }
+
+    .leader-text h5 {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #004aad;
+    }
+
+    .leader-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .leader-image img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .read-more {
+      color: #004aad;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Advisory Board */
+    .advisory-board {
+      text-align: center;
+      padding: 60px 10%;
+    }
+
+    .advisory-board h2 {
+      color: #002b5b;
+      margin-bottom: 40px;
+    }
+
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .board-member {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .board-member:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .board-member img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .board-member h4 {
+      color: #002b5b;
+      margin-bottom: 10px;
+    }
+
+    .board-member p {
+      line-height: 1.5;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background: #003366;
+      color: white;
+      padding: 40px 5%;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    footer .footer-left img {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    footer p,
+    footer a {
+      color: white;
+      font-size: 13px;
+      line-height: 1.8;
+      text-decoration: none;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #1aa38a;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li a:hover {
+      text-decoration: underline;
+    }
+
+    footer .bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="main-logo">
+        <img src="./images/imgi_2_eis-white.png" alt="Elpro Logo" />
+      </div>
+      <div class="sub-logo">
+        <img src="./images/imgi_3_sahitya.jpg" alt="Saahitya Logo" />
+        <a href="#">Know More about Saahitya</a>
+      </div>
+    </div>
+
+    <!-- Hamburger Checkbox & Icon -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html"class="active">About</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <img src="img/imgi_1_banner-image@2x.png" alt="Elpro International School Banner">
+  </section>
+
+  <!-- Core Values -->
+  <section class="core-values">
+    <h2>Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <img src="img/imgi_9_image-70@2x.png" alt="">
+        <h4>Inspire and Execute</h4>
+        <p>Energize through strong execution and relentless challenge with respect.</p>
+      </div>
+      <div class="value-card">
+        <img src="img/imgi_10_image-71@2x.png" alt="">
+        <h4>Empathetic Listening</h4>
+        <p>Step into others’ shoes with empathy and problem-solving, showing emotional maturity.</p>
+      </div>
+      <div class="value-card">
+        <img src="img/imgi_11_image-75@2x.png" alt="">
+        <h4>Value-based Recruitment</h4>
+        <p>Recruit for values, train for skills, and hire for workplace goals with modern synergy.</p>
+      </div>
+      <div class="value-card">
+        <img src="img/imgi_12_image-74@2x.png" alt="">
+        <h4>Open Dialogue</h4>
+        <p>Encourage honest discussion and inclusive feedback, making teamwork our backbone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="leadership">
+    <h3>OUR LEADERSHIP</h3>
+    <h2>A Guiding Light For Elpro International School</h2>
+    <div class="leader-content">
+      <div class="leader-text">
+        <h4>Dr. Amrita Vohra: Director Principal</h4>
+        <p>Elpro International School is proud to have Dr. Amrita Vohra as a vital link connecting students, faculty, and management. Her warmth and dedication are felt throughout the school community.</p>
+        <h5>A Leader in Education</h5>
+        <p>Dr. Vohra brings a wealth of experience to her role. With a Ph.D. in Education Psychology and over three decades of experience, she creates positive learning environments and fosters continuous development.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="leader-image">
+        <img src="img/imgi_15_rectangle-3843@2x.png" alt="Dr. Amrita Vohra">
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisory Board -->
+  <section class="advisory-board">
+    <h2>ADVISORY BOARD</h2>
+    <div class="board-grid">
+      <div class="board-member">
+        <img src="img/imgi_16_rectangle-453@2x.png" alt="">
+        <h4>Angela Ffrench</h4>
+        <p>Angela Ffrench brings 30 years of experience in academic leadership and development in international education.</p>
+      </div>
+      <div class="board-member">
+        <img src="img/imgi_17_rectangle-45-14@2x.png" alt="">
+        <h4>Lord David Evans</h4>
+        <p>Lord Evans’ diverse experience in media and business sectors brings strategic excellence to the advisory board.</p>
+      </div>
+      <div class="board-member">
+        <img src="img/imgi_18_rectangle-45-23@2x.png" alt="">
+        <h4>Alfred Center</h4>
+        <p>Alfred Center brings expertise in curriculum innovation and learning assessment, fostering academic growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <img src="./images/imgi_2_eis-white.png" alt="Elpro Logo" />
+      <p>admissions@elproschools.edu.in</p>
+      <p>+91 8069020202</p>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-col">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Curriculum</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Campuses</h4>
+        <ul>
+          <li><a href="#">EIS Chinchwad</a></li>
+          <li><a href="#">EIS Hinjewadi</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      © Copyright 2024, All Rights Reserved </div>
+  </footer>
+</body>
+</html>
